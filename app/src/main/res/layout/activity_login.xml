@@ -7,11 +7,57 @@
     android:orientation="vertical"
     tools:context=".Login">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="60dp"
+        android:text="Login"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/edtx_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:hint="Ingrese su usuario"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/edtx_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:ems="10"
+        android:hint="Ingrese su password"
+        android:inputType="textPassword"
+        android:textAlignment="center" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_iniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="25dp"
-        android:text="Log in"
-        app:cornerRadius="20dp"/>
+        android:backgroundTint="#80A54B"
+        android:onClick="IniciarSesion"
+        android:text="inicar sesion"
+        app:cornerRadius="20dp" />
+
+    <Button
+        android:id="@+id/btn_registrar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="#AA4646"
+        android:onClick="CrearNuevoUsuario"
+        android:text="Crear nuevo usuario"
+        app:cornerRadius="20dp" />
+
 </LinearLayout>
