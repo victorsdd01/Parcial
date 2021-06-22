@@ -66,12 +66,13 @@
         android:inputType="textEmailAddress" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_crearNuevoUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
         android:layout_weight="1"
         android:backgroundTint="#AA4646"
+        android:onClick="CrearNuevoUsuario"
         android:text="Crear"
         app:cornerRadius="20dp" />
 

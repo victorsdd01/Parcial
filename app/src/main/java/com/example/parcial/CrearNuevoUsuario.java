@@ -36,18 +36,25 @@ public class CrearNuevoUsuario extends AppCompatActivity {
            {
               if(!pasword.isEmpty())
                 {
-                    if(vpassword.equals(pasword))
+                    if(!vpassword.isEmpty())
                       {
+
                           if(!email.isEmpty())
                             {
-                                // aqui se hace la insercion en la BD
+                                if(vpassword.equals(pasword))
+                                  {
+                                     //aqui se hace la insercion en la BD...
+                                  }else
+                                      {
+                                         this.vpassword.setError("Las contraseñas no coinciden");
+                                      }
                             }else
                                 {
                                    this.email.setError("Este campo es requerido");
                                 }
                       }else
                           {
-                              this.vpassword.setError("Las contraseñas no coinciden");
+                              this.vpassword.setError("Este campo es requerido");
                           }
                 }else
                     {
