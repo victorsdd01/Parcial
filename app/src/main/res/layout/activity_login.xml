@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="IniciarSesion"
     android:orientation="vertical"
     tools:context=".Login">
 
@@ -16,27 +17,48 @@
         android:textAlignment="center"
         android:textSize="24sp" />
 
-    <EditText
-        android:id="@+id/edtx_usuario"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="50dp"
-        android:ems="10"
-        android:hint="Ingrese su usuario"
-        android:inputType="textPersonName"
-        android:textAlignment="center" />
+        android:layout_margin="25dp"
+        android:layout_marginBottom="0dp"
+        android:hint="usuario"
+        app:startIconDrawable="@drawable/ic_account_icon">
 
-    <EditText
-        android:id="@+id/edtx_password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtx_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:ems="10"
-        android:hint="Ingrese su password"
-        android:inputType="textPassword"
-        android:textAlignment="center" />
+        android:layout_margin="25dp"
+        android:layout_marginTop="10dp"
+        android:hint="password"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_lock">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtx_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/login_spinner_tipoUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp" />
 
     <Button
         android:id="@+id/btn_iniciarSesion"

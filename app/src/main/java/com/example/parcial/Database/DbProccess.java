@@ -2,6 +2,7 @@ package com.example.parcial.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.parcial.Database.Entidades.Usuarios;
@@ -30,10 +31,31 @@ public class DbProccess {
                    values.put("password",usuario.getPassword());
 
                    db.insert("users",null,values);
+                   db.close();
                    return true;
                }
          }
          catch(Exception e){}
+         return false;
+     }
+     //metodo para validar el login de la BD...
+
+    public  boolean ValidarUsuario(Usuarios usuario)
+     {
+         try {
+             SQLiteDatabase db= _database.getReadableDatabase();
+             if(db != null)
+               {
+                 String campos [] = new String[]{"user","password"};
+                 String arg    [] = new String[]{usuario.getUser(), usuario.getPassword()};
+                   Cursor cursor = db.query("users",campos,"user='"+arg[0]+"' AND password ='"+arg[1]+"'",arg,null,null,null);
+                   if(cursor.moveToFirst())
+                     {
+                        return true;
+                     }
+               }
+         }catch(Exception e){}
+
          return false;
      }
 

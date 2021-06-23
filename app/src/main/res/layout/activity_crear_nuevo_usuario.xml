@@ -11,66 +11,88 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:layout_weight="1"
+        android:layout_margin="25dp"
         android:text="Crear Nuevo Usuario"
         android:textAlignment="center"
         android:textSize="24sp" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/CrearNu_edtxUsuario"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="50dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="Ingrese su nombre de usuario"
-        android:inputType="textPersonName" />
+        android:layout_margin="25dp"
+        android:hint="Ingrese un nombre de usuario"
+        app:startIconDrawable="@drawable/ic_account_icon">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TextInputUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/CrearNu_edtxPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="ingrese una contraseña"
-        android:inputType="textPassword" />
+        android:layout_margin="25dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_lock">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TextInputpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese una contraseña" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/CrearNu_edtxVerificarPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="Ingrese nuevamente la contraseña"
-        android:inputType="textPassword" />
+        android:layout_margin="25dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_lock">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TextInputVerificarPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Vuelva a introducir la contraseña" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/CrearNu_edtxEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="ingrese su correo"
-        android:inputType="textEmailAddress" />
+        android:layout_margin="25dp"
+        app:startIconDrawable="@drawable/ic_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TextInputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduzca su Email" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/CrearNu_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp" />
 
     <Button
         android:id="@+id/btn_crearNuevoUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
-        android:layout_weight="1"
         android:backgroundTint="#AA4646"
         android:onClick="CrearNuevoUsuario"
         android:text="Crear"
