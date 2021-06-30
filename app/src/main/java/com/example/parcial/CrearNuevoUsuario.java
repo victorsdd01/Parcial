@@ -34,6 +34,7 @@ import com.google.android.material.textfield.TextInputEditText;
           password=(TextInputEditText) findViewById(R.id.TextInputpassword);
           vpassword=(TextInputEditText) findViewById(R.id.TextInputVerificarPassword);
           email=(TextInputEditText) findViewById(R.id.TextInputEmail);
+
           sp2=(Spinner)findViewById(R.id.CrearNu_spinner);
           String TipoUsuario[]={"Tipo de usuario","Usuario normal","Administrador"};
           Adapter adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,TipoUsuario);
@@ -60,8 +61,10 @@ import com.google.android.material.textfield.TextInputEditText;
                             {
                                 if(vpassword.equals(pasword))
                                   {
-                                     //aqui se hace la insercion en la BD...
-                                      GuardarUsuario(usuario,pasword);
+                                      try {
+                                          //aqui se hace la insercion en la BD...
+                                          GuardarUsuario(usuario,pasword);
+                                      }catch(Exception e){}
 
                                   }else
                                       {
@@ -93,7 +96,8 @@ import com.google.android.material.textfield.TextInputEditText;
             DbProccess dbProccess = new DbProccess(getApplicationContext());
             if(dbProccess.GuardarUsuario(obj))
               {
-                  AlertaUsuarioRegistrado();
+                  startActivity(new Intent(getApplicationContext(),Login.class));
+                  //AlertaUsuarioRegistrado();
                   //Toast.makeText(this,"usuario insertado correctamente en la db",Toast.LENGTH_LONG).show();
               }
         }catch(Exception e){}
