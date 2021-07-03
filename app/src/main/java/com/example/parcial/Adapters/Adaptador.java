@@ -30,7 +30,7 @@ public class Adaptador extends ArrayAdapter<Recetas> {
         View item = inflater.inflate(R.layout.recetas_listview, null);
 
         TextView nombre_receta = (TextView)item.findViewById(R.id.txv_nombreReceta);
-        nombre_receta.setText(recetas.get(position).getNombre_receta());
+        nombre_receta.setText(recetas.get(position).getNombreReceta());
         //foto...
 
         return(item);

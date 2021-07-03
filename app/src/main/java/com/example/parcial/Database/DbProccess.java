@@ -4,11 +4,19 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.parcial.Database.Entidades.Usuarios;
 import com.example.parcial.R;
 
 public class DbProccess {
+
+/*
+    Context context;
+    public DbProccess(Context context) {
+        super(context);
+    }
+
 
     DBparcial _database;
 
@@ -38,26 +46,30 @@ public class DbProccess {
          catch(Exception e){}
          return false;
      }
-     //metodo para validar el login de la BD...
 
+
+     //metodo para validar el login de la BD...
     public  boolean ValidarUsuario(Usuarios usuario)
      {
          try {
              SQLiteDatabase db= _database.getReadableDatabase();
-             if(db != null)
-               {
-                 String campos [] = new String[]{"user","password"};
-                 String arg    [] = new String[]{usuario.getUser(), usuario.getPassword()};
-                   Cursor cursor = db.query("users",campos,"user='"+arg[0]+"' AND password ='"+arg[1]+"'",arg,null,null,null);
-                   if(cursor.moveToFirst())
-                     {
-                        return true;
-                     }
-               }
+             if(db != null){
+                   try {
+                       String campos [] = new String[]{"user","password"};
+                       String arg    [] = new String[]{usuario.getUser(), usuario.getPassword()};
+                       Cursor cursor = db.query("users",campos,"user='"+arg[0]+"' AND password ='"+arg[1]+"'",arg,null,null,null);
+                       if(cursor.moveToFirst())
+                       {
+                           return true;
+                       }
+                   }catch(Exception e){}
+             }else{}
          }catch(Exception e){}
 
          return false;
      }
 
+
+    */
 
 }// llave de la clase...

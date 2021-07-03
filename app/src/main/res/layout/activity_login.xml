@@ -70,16 +70,6 @@
         android:text="inicar sesion"
         app:cornerRadius="20dp" />
 
-    <Button
-        android:id="@+id/btn_registrar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="25dp"
-        android:backgroundTint="#AA4646"
-        android:onClick="CrearNuevoUsuario"
-        android:text="Crear nuevo usuario"
-        app:cornerRadius="20dp" />
+
 
 </LinearLayout>

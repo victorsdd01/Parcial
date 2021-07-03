@@ -13,8 +13,12 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
+import com.example.parcial.Admin.Admin_Main;
+import com.example.parcial.Admin.CrearNuevoUsuario;
+import com.example.parcial.Database.DBparcial;
 import com.example.parcial.Database.DbProccess;
 import com.example.parcial.Database.Entidades.Usuarios;
+import com.example.parcial.Normal_User.Usuario_normal_Main;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class Login extends AppCompatActivity {
@@ -41,44 +45,39 @@ public class Login extends AppCompatActivity {
      }
 
      // metodo que valida que exista un usuario...
-     public  void IniciarSesion(View view)
-      {
+     public  void IniciarSesion(View view){
           String usuario,password;
           //aqui se almacena lo que el usuario escribe en los inputs...
 
           usuario=this.usuario.getText().toString();
           password=this.password.getText().toString();
 
-          if(!usuario.isEmpty())
-            {
-                if(!password.isEmpty())
-                  {
+          if(!usuario.isEmpty()){
+                if(!password.isEmpty()){
                       String seleccion=sp1.getSelectedItem().toString();
-                      if(seleccion.equals("Usuario normal")|| seleccion.equals("Administrador"))
-                        {
-                            SesionporDB();
-                        }else
+                      if(seleccion.equals("Usuario normal")|| seleccion.equals("Administrador")){
+                            if(seleccion.equals("Usuario normal")){
+                                startActivity(new Intent(getApplicationContext(), Usuario_normal_Main.class));
+                            }else
+                                if(seleccion.equals("Administrador")){
+                                    startActivity(new Intent(getApplicationContext(), Admin_Main.class));
+                                }
+
+                      }else
                             {
                                 AlertError();
                             }
 
-                  }else
+                }else
                       {
                           this.password.setError("Este campo es requerido");
                       }
 
-            } else
+          } else
                   {
                      this.usuario.setError("Este campo es requerido");
                   }
-      }
-
-      // metodo para registrar un nuevo usuario
-    public void CrearNuevoUsuario(View view)
-     {
-         startActivity(new Intent(getApplicationContext(),CrearNuevoUsuario.class));
-     }
-
+    }
 
      public void  AlertError()
       {
@@ -94,19 +93,8 @@ public class Login extends AppCompatActivity {
             }).show();
       }
 
-      //metodo para validar el usuario de la DB...
-    public  void SesionporDB()
-     {
-         try {
-             DbProccess db = new DbProccess(getApplicationContext());
-             Usuarios obj = new Usuarios(usuario.getText().toString(),password.getText().toString());
-             if(db.ValidarUsuario(obj))
-               {
-                  startActivity(new Intent(getApplicationContext(),MainActivity.class));
-               }
-         }catch(Exception e){
-             Toast.makeText(getApplicationContext(),"a ocurrido un error",Toast.LENGTH_LONG).show();}
-     }
+
+
 
 
 }

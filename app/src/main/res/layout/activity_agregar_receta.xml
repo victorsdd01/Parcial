@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Admin.agregarReceta">
+
+    <TextView
+        android:id="@+id/lbl_agregar_recetas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:text="Agregar Nueva Receta"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:text="Ingrese sus ingredientes"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/agregarReceta_nombreReceta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Nombre de la receta"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/agregarReceta_ingrediente1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:ems="10"
+        android:hint="Ingrediente 1"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+    <EditText
+        android:id="@+id/agregarReceta_ingrediente2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:ems="10"
+        android:hint="Ingrediente 2"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+    <EditText
+        android:id="@+id/agregarReceta_ingrediente3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:ems="10"
+        android:hint="Ingrediente 3"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+    <EditText
+        android:id="@+id/agregarReceta_ingrediente4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:ems="10"
+        android:hint="Ingrediente 4"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+    <EditText
+        android:id="@+id/agregarReceta_ingrediente5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:ems="10"
+        android:hint="Ingrediente 5"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btn_agregarReceta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:onClick="AgregarNuevaReceta"
+        android:text="agregar receta"
+        app:cornerRadius="20dp" />
+</LinearLayout>

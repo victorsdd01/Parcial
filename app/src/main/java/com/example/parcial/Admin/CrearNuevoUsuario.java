@@ -1,10 +1,13 @@
- package com.example.parcial;
+ package com.example.parcial.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -13,8 +16,11 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
+import com.example.parcial.Database.DBparcial;
 import com.example.parcial.Database.DbProccess;
 import com.example.parcial.Database.Entidades.Usuarios;
+import com.example.parcial.Login;
+import com.example.parcial.R;
 import com.google.android.material.textfield.TextInputEditText;
 
  public class CrearNuevoUsuario extends AppCompatActivity {
@@ -61,11 +67,7 @@ import com.google.android.material.textfield.TextInputEditText;
                             {
                                 if(vpassword.equals(pasword))
                                   {
-                                      try {
-                                          //aqui se hace la insercion en la BD...
-                                          GuardarUsuario(usuario,pasword);
-                                      }catch(Exception e){}
-
+                                      InsertarNuevoUsuario();
                                   }else
                                       {
                                          this.vpassword.setError("Las contraseñas no coinciden");
@@ -88,35 +90,28 @@ import com.google.android.material.textfield.TextInputEditText;
                }
        }// llave del metodo...
 
-    // metodo para registrar usuario en la db...
-    private void GuardarUsuario(String usuario,String password)
-     {
-        try {
-            Usuarios obj = new Usuarios(usuario,password);
-            DbProccess dbProccess = new DbProccess(getApplicationContext());
-            if(dbProccess.GuardarUsuario(obj))
-              {
-                  startActivity(new Intent(getApplicationContext(),Login.class));
-                  //AlertaUsuarioRegistrado();
-                  //Toast.makeText(this,"usuario insertado correctamente en la db",Toast.LENGTH_LONG).show();
-              }
-        }catch(Exception e){}
-     } // llave del metodo guardar usuario...
+     public void InsertarNuevoUsuario(){
 
-     public void AlertaUsuarioRegistrado()
-     {
-         AlertDialog.Builder alerta= new AlertDialog.Builder(this);
-         alerta.setMessage("Usuario creado correctamente!!!")
-                 .setCancelable(false)
-                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                     @Override
-                     public void onClick(DialogInterface dialog, int which) {
-                         startActivity(new Intent(getApplicationContext(),Login.class));
-                     }
-                 })
-                 .show();
+        String usuario,password;
 
+         usuario=this.usuario.getText().toString();
+         password=this.password.getText().toString();
 
-     } //llace del metodo...
+         DBparcial dbParcial  = new DBparcial(getApplicationContext(),"RecetasDB",null,1);
+         SQLiteDatabase db = dbParcial.getWritableDatabase();
+         if(db!=null){
+             try {
+
+             }catch (Exception e){Toast.makeText(this,"ha ocurrido un error de excepcion al insertar el usuario",Toast.LENGTH_LONG).show();}
+             ContentValues values = new ContentValues();
+             values.put("nombre_usuario",usuario);
+             values.put("password_usuario",password);
+
+             db.insert("t_usuarios",null,values);
+             Toast.makeText(this,"Se a insertado correctamente el usaurio: "+usuario+"y el password: "+password+"",Toast.LENGTH_LONG).show();
+             startActivity(new Intent(getApplicationContext(),Admin_Main.class));
+
+         }else{Toast.makeText(this,"Error en db!=null :( ",Toast.LENGTH_LONG).show();}
+     }//llave del metodo crearUsuario...
 
 }// llave de la clase...

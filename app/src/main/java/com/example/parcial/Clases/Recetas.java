@@ -2,18 +2,19 @@ package com.example.parcial.Clases;
 
 public class Recetas {
 
-    private String nombre_receta;
-    //private int foto;
+    private String nombreReceta;
+    private String ingrediente1;
+    private String ingrediente2;
+    private String ingrediente3;
+    private String ingrediente4;
+    private String ingrediente5;
 
-
-    public Recetas(String nombre_receta) {
-        this.nombre_receta = nombre_receta;
-        //this.foto = foto;
+    public Recetas(String nombreReceta){
+        this.nombreReceta=nombreReceta;
     }
 
-    public String getNombre_receta() {
-        return nombre_receta;
+
+    public String getNombreReceta() {
+        return nombreReceta;
     }
-
-
 }
