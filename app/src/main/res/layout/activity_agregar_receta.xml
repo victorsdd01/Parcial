@@ -43,16 +43,19 @@
         android:id="@+id/agregarReceta_ingrediente1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Ingrediente 1"
         android:inputType="textPersonName"
         android:textAlignment="center" />
+
     <EditText
         android:id="@+id/agregarReceta_ingrediente2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Ingrediente 2"
         android:inputType="textPersonName"
@@ -66,11 +69,13 @@
         android:hint="Ingrediente 3"
         android:inputType="textPersonName"
         android:textAlignment="center" />
+
     <EditText
         android:id="@+id/agregarReceta_ingrediente4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Ingrediente 4"
         android:inputType="textPersonName"
@@ -82,6 +87,17 @@
         android:layout_margin="25dp"
         android:ems="10"
         android:hint="Ingrediente 5"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/agregarReceta_edtx_procedimiento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:ems="10"
+        android:hint="Procedimiento"
         android:inputType="textPersonName"
         android:textAlignment="center" />
 

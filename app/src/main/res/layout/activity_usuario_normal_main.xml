@@ -43,7 +43,7 @@
             android:layout_height="match_parent" >
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/usuarioNormal_edtx_nombreRecetaAgregar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -58,6 +58,37 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="agregar a favorito"
+                android:textSize="10sp"
+                app:cornerRadius="15dp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <EditText
+                android:id="@+id/usuarioNormal_edtx_nombreRecetaVer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:hint="Nombre de la receta"
+                android:inputType="textPersonName"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/btn_verProcedimientoReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="VerProcedimientoReceta"
+                android:text="ver procedimiento"
                 android:textSize="10sp"
                 app:cornerRadius="15dp" />
         </TableRow>

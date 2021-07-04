@@ -14,7 +14,7 @@ import com.example.parcial.R;
 
 public class agregarReceta extends AppCompatActivity {
 
-    EditText nombre_receta,i1,i2,i3,i4,i5;
+    EditText nombre_receta,i1,i2,i3,i4,i5,procedimiento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +29,12 @@ public class agregarReceta extends AppCompatActivity {
         i3=(EditText)findViewById(R.id.agregarReceta_ingrediente3);
         i4=(EditText)findViewById(R.id.agregarReceta_ingrediente4);
         i5=(EditText)findViewById(R.id.agregarReceta_ingrediente5);
+        procedimiento=(EditText)findViewById(R.id.agregarReceta_edtx_procedimiento);
     }// llave de inicar controller...
 
     public void AgregarNuevaReceta(View view){
 
-        String nombreReceta,i1,i2,i3,i4,i5;
+        String nombreReceta,i1,i2,i3,i4,i5,procedimiento;
 
         nombreReceta=nombre_receta.getText().toString();
         i1=this.i1.getText().toString();
@@ -41,6 +42,7 @@ public class agregarReceta extends AppCompatActivity {
         i3=this.i3.getText().toString();
         i4=this.i4.getText().toString();
         i5=this.i5.getText().toString();
+        procedimiento=this.procedimiento.getText().toString();
 
         DBparcial dbParcial = new DBparcial(getApplicationContext(),"RecetasDB",null,1);
         SQLiteDatabase db = dbParcial.getWritableDatabase();
@@ -53,6 +55,7 @@ public class agregarReceta extends AppCompatActivity {
                 values.put("ingrediente_receta3",i3);
                 values.put("ingrediente_receta4",i4);
                 values.put("ingrediente_receta5",i5);
+                values.put("procedimiento_receta",procedimiento);
 
                 db.insert("t_recetas",null,values);
                 Toast.makeText(this,"receta agregada",Toast.LENGTH_LONG).show();
