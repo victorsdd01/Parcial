@@ -82,16 +82,18 @@ public class Login extends AppCompatActivity {
                 if(!password.isEmpty()){
                       String seleccion=sp1.getSelectedItem().toString();
                       if(seleccion.equals("Usuario normal")|| seleccion.equals("Administrador")){
-                          /*
                             if(seleccion.equals("Usuario normal")){
-                                startActivity(new Intent(getApplicationContext(), Usuario_normal_Main.class));
+                                validarUsuario(usuario,password,seleccion);
+                                Intent i = new Intent(getApplicationContext(),Usuario_normal_Main.class);
+                                //i.putExtra("usuario",usuario);
+                                startActivity(i);
                             }else
                                 if(seleccion.equals("Administrador")){
-                                    startActivity(new Intent(getApplicationContext(), Admin_Main.class));
+                                    validarUsuario(usuario,password,seleccion);
+                                    Intent i = new Intent(getApplicationContext(),Admin_Main.class);
+                                    //i.putExtra("usuario",usuario);
+                                    startActivity(i);
                                 }
-
-                           */
-                         validarUsuario(usuario,password,seleccion);
                       }else{ AlertError(); }
 
                 }else { this.password.setError("Este campo es requerido"); }
@@ -99,13 +101,15 @@ public class Login extends AppCompatActivity {
           } else { this.usuario.setError("Este campo es requerido"); }
     }// llave del metodo iniciar sesion...
 
-    public void validarUsuario(String usuario,String pass,String seleccion){
+    public void validarUsuario(String usuario,String pass,String tipoUsuario){
         try {
             DBparcial dbParcial = new DBparcial(getApplicationContext(),"RecetasDB",null,1);
             SQLiteDatabase db= dbParcial.getReadableDatabase();
-            Cursor c= db.rawQuery("SELECT nombre_usuario,password_usuario,tipoUsuario_usuario FROM t_usuarios WHERE nombre_usuario='"+usuario+"' AND password_usuario='"+pass+"' AND tipoUsuario_usuario='"+seleccion+"' ",null);
+            Cursor c= db.rawQuery("SELECT nombre_usuario,password_usuario,tipoUsuario_usuario FROM t_usuarios WHERE nombre_usuario='"+usuario+"' AND password_usuario='"+pass+"' AND tipoUsuario_usuario='"+tipoUsuario+"' ",null);
             if(db!=null){
                 if(c.moveToFirst()){
+                    Toast.makeText(this, "si loguea", Toast.LENGTH_SHORT).show();
+                    /*
                     if(seleccion.equals("Usuario normal")){
                         try {
                             Intent i = new Intent(getApplicationContext(),Usuario_normal_Main.class);
@@ -121,6 +125,8 @@ public class Login extends AppCompatActivity {
                                 startActivity(i);
                             }catch (Exception e){Toast.makeText(this,"ha ocurrido un error en la seleccion 2",Toast.LENGTH_LONG).show(); }
                         }
+
+                     */
                 }else{Toast.makeText(this,"El usuario o contraseña son incorrectos",Toast.LENGTH_LONG).show();}
             }else{
                 Toast.makeText(this, "error en db!=null", Toast.LENGTH_SHORT).show();
