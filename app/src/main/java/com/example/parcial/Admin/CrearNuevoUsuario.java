@@ -2,7 +2,11 @@
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -61,7 +65,11 @@ import com.google.android.material.textfield.TextInputEditText;
                             {
                                 if(vpassword.equals(pasword))
                                   {
-                                      InsertarNuevoUsuario();
+                                      String TipoUsuario=sp2.getSelectedItem().toString();
+                                      if(TipoUsuario.equals("Usuario normal") || TipoUsuario.equals("Administrador")){
+                                          InsertarNuevoUsuario(TipoUsuario);
+                                      }else{errorAlert();}
+
                                   }else
                                       {
                                          this.vpassword.setError("Las contraseñas no coinciden");
@@ -84,7 +92,21 @@ import com.google.android.material.textfield.TextInputEditText;
                }
        }// llave del metodo...
 
-     public void InsertarNuevoUsuario(){
+     private void errorAlert(){
+
+        androidx.appcompat.app.AlertDialog.Builder builder= new androidx.appcompat.app.AlertDialog.Builder(this);
+         builder.setTitle("Error");
+         builder.setMessage("Debe elegir un tipo de usuario");
+         builder.setCancelable(false);
+         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+             @Override
+             public void onClick(DialogInterface dialog, int which) {
+
+             }
+         }).show();
+     }
+
+     public void InsertarNuevoUsuario(String tipoUsuario){
 
         String usuario,password;
 
@@ -95,16 +117,16 @@ import com.google.android.material.textfield.TextInputEditText;
          SQLiteDatabase db = dbParcial.getWritableDatabase();
          if(db!=null){
              try {
+                 ContentValues values = new ContentValues();
+                 values.put("nombre_usuario",usuario);
+                 values.put("password_usuario",password);
+                 values.put("tipoUsuario_usuario",tipoUsuario);
 
+                 db.insert("t_usuarios",null,values);
+                 db.close();
+                 Toast.makeText(this,"Se a insertado correctamente el usaurio: "+usuario+"y el password: "+password+"",Toast.LENGTH_LONG).show();
+                 startActivity(new Intent(getApplicationContext(),Admin_Main.class));
              }catch (Exception e){Toast.makeText(this,"ha ocurrido un error de excepcion al insertar el usuario",Toast.LENGTH_LONG).show();}
-             ContentValues values = new ContentValues();
-             values.put("nombre_usuario",usuario);
-             values.put("password_usuario",password);
-
-             db.insert("t_usuarios",null,values);
-             Toast.makeText(this,"Se a insertado correctamente el usaurio: "+usuario+"y el password: "+password+"",Toast.LENGTH_LONG).show();
-             startActivity(new Intent(getApplicationContext(),Admin_Main.class));
-
          }else{Toast.makeText(this,"Error en db!=null :( ",Toast.LENGTH_LONG).show();}
      }//llave del metodo crearUsuario...
 

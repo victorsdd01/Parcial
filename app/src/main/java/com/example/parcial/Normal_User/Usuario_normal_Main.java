@@ -49,7 +49,7 @@ public class Usuario_normal_Main extends AppCompatActivity {
         nombreRecetaAgregar=(EditText)findViewById(R.id.usuarioNormal_edtx_nombreRecetaAgregar);
         nombreRecetaVer=(EditText)findViewById(R.id.usuarioNormal_edtx_nombreRecetaVer);
         lsv_usuario=(ListView)findViewById(R.id.usuarioNormalListview);
-        registerForContextMenu(lsv_usuario);
+        //registerForContextMenu(lsv_usuario);
 
         /*
         lsv_usuario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -154,6 +154,7 @@ public class Usuario_normal_Main extends AppCompatActivity {
         }
 
     }// llave del metodo...
+
     // carga toda las recetas....
     public void CargarRecetas(){
         try {
@@ -178,7 +179,7 @@ public class Usuario_normal_Main extends AppCompatActivity {
             lsv_usuario.setAdapter(adapter);
 
         }catch (Exception e){Toast.makeText(this,"ha ocurrido un error al cargar el listView",Toast.LENGTH_LONG).show();}
-    }// llave del metodo cargar Listview...
+    }// llave del metodo cargarRecetas...
 
 
 
