@@ -28,6 +28,7 @@ public class Admin_Main extends AppCompatActivity {
 
     TextView  nombre_usuario;
     ListView lsv1;
+    Bundle usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class Admin_Main extends AppCompatActivity {
 
     private void IniciarController(){
         nombre_usuario=(TextView)findViewById(R.id.admin_main_txv_nombre_usuario);
+        nombre_usuario.setText(usuario.getString("usuario"));
         lsv1=(ListView)findViewById(R.id.admin_liistViewRecetas);
     }// llave del iniciarController...
 

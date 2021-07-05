@@ -41,9 +41,15 @@ public class EliminarReceta extends AppCompatActivity {
 
             DBparcial dbParcial = new DBparcial(getApplicationContext(),"RecetasDB",null,1);
             SQLiteDatabase db =dbParcial.getWritableDatabase();
+            Cursor c=db.rawQuery("SELECT nombre_receta FROM t_recetas WHERE nombre_receta='"+nombreReceta+"'",null);
             if(db!=null){
-                db.delete("t_recetas","nombre_receta='"+nombreReceta+"'",null);
-                Toast.makeText(getApplicationContext(), "en teoria la receta se elimino", Toast.LENGTH_SHORT).show();
+                if(c.moveToFirst()){
+                    db.delete("t_recetas","nombre_receta='"+nombreReceta+"'",null);
+                    Toast.makeText(getApplicationContext(), "en teoria la receta se elimino", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this, "la receta "+nombreReceta+" no existe", Toast.LENGTH_SHORT).show();
+                }//
+
 
             }else{Toast.makeText(getApplicationContext(), "ha ocurrido un error en db!=null", Toast.LENGTH_SHORT).show();}
 
@@ -52,7 +58,6 @@ public class EliminarReceta extends AppCompatActivity {
         }
 
     }//llave del metodo eliminarReceta...
-
 
     public void CargarRecetas(){
         try {

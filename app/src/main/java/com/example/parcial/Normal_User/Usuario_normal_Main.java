@@ -33,6 +33,7 @@ public class Usuario_normal_Main extends AppCompatActivity {
     TextView nombreUsuario;
     ListView lsv_usuario;
     EditText nombreRecetaVer,nombreRecetaAgregar;
+    Bundle usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class Usuario_normal_Main extends AppCompatActivity {
 
     public void IniciarController(){
         nombreUsuario=(TextView)findViewById(R.id.usuarioNormal_txv_nombre_usuario);
+        nombreUsuario.setText(usuario.getString("usuario"));
         nombreRecetaAgregar=(EditText)findViewById(R.id.usuarioNormal_edtx_nombreRecetaAgregar);
         nombreRecetaVer=(EditText)findViewById(R.id.usuarioNormal_edtx_nombreRecetaVer);
         lsv_usuario=(ListView)findViewById(R.id.usuarioNormalListview);
@@ -141,6 +143,7 @@ public class Usuario_normal_Main extends AppCompatActivity {
                         db.insert("t_recetasFavoritas",null,values);
 
                         Toast.makeText(this,"En teoria se agrego correctamente la receta ='"+nombreReceta+"'",Toast.LENGTH_LONG).show();
+
                     }else{Toast.makeText(this,"La receta :"+nombreReceta+" no existe",Toast.LENGTH_LONG).show();}
 
                 }catch (Exception e){Toast.makeText(this,"ha ocurrido un error al insertar la receta a favorito",Toast.LENGTH_LONG).show();}
