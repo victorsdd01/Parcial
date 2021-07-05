@@ -2,10 +2,7 @@
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -17,9 +14,6 @@ import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.example.parcial.Database.DBparcial;
-import com.example.parcial.Database.DbProccess;
-import com.example.parcial.Database.Entidades.Usuarios;
-import com.example.parcial.Login;
 import com.example.parcial.R;
 import com.google.android.material.textfield.TextInputEditText;
 

@@ -57,7 +57,6 @@ public class Admin_Main extends AppCompatActivity {
                 do{
                     Recetas receta = new Recetas(
                             c.getString(0)
-
                     );
                     NuevaReceta.add(receta);
                 }while (c.moveToNext());

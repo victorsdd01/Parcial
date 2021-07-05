@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.parcial.Adapters.Adaptador;
 import com.example.parcial.Clases.Recetas;
 import com.example.parcial.Database.DBparcial;
+import com.example.parcial.Login;
 import com.example.parcial.R;
 
 import java.util.ArrayList;
@@ -90,6 +91,22 @@ public class Usuario_normal_Main extends AppCompatActivity {
 
  */
 
+    public void volver(View view ){
+        startActivity(new Intent(getApplicationContext(), Login.class));
+    }// llave del metodo volver...
+
+    public void verRecetasFavoritas(View view){
+        startActivity(new Intent(getApplicationContext(),RecetasFavoritas.class));
+    }// llave de verRecetasFavoritas...
+
+    public void AregarRecetaFavorita(View view){
+        String nombreReceta;
+        nombreReceta=nombreRecetaAgregar.getText().toString();
+        if(!nombreReceta.isEmpty()){
+            recetasFavoritas(nombreReceta);
+        }else{Toast.makeText(getApplicationContext(),"Este campo es requerido",Toast.LENGTH_LONG).show();}
+    }// llave del metodo agregar receta a favoritos...
+
     public void VerProcedimientoReceta(View view){
         try {
             String nombreReceta;
@@ -111,18 +128,20 @@ public class Usuario_normal_Main extends AppCompatActivity {
         }catch (Exception e){Toast.makeText(this,"ha ocurrido un error al mostrar el procedimiento de la receta",Toast.LENGTH_LONG).show();}
     }// llave del metodo ver procedimiento receta...
     
-    public void recetasFavoritas(View view){
+    public void recetasFavoritas(String nombreReceta ){
         try {
-            String nombreReceta = null;
             DBparcial dbParcial = new DBparcial(getApplicationContext(),"RecetasDB",null,1);
             SQLiteDatabase db=dbParcial.getWritableDatabase();
+            Cursor c = db.rawQuery("SELECT nombre_receta FROM t_recetas WHERE nombre_receta='"+nombreReceta+"'",null);
             if(db!=null){
                 try {
-                    ContentValues values = new ContentValues();
-                    values.put("nombre_recetaFavortia",nombreReceta);
-                    db.insert("t_recetasFavoritas",null,values);
+                    if(c.moveToFirst()){
+                        ContentValues values = new ContentValues();
+                        values.put("nombre_recetaFavortia",nombreReceta);
+                        db.insert("t_recetasFavoritas",null,values);
 
-                    Toast.makeText(this,"En teoria se agrego correctamente la receta ='"+nombreReceta+"'",Toast.LENGTH_LONG).show();
+                        Toast.makeText(this,"En teoria se agrego correctamente la receta ='"+nombreReceta+"'",Toast.LENGTH_LONG).show();
+                    }else{Toast.makeText(this,"La receta :"+nombreReceta+" no existe",Toast.LENGTH_LONG).show();}
 
                 }catch (Exception e){Toast.makeText(this,"ha ocurrido un error al insertar la receta a favorito",Toast.LENGTH_LONG).show();}
 
@@ -135,7 +154,6 @@ public class Usuario_normal_Main extends AppCompatActivity {
         }
 
     }// llave del metodo...
-
     // carga toda las recetas....
     public void CargarRecetas(){
         try {

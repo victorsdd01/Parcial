@@ -11,13 +11,8 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
-import android.widget.Toast;
 
 import com.example.parcial.Admin.Admin_Main;
-import com.example.parcial.Admin.CrearNuevoUsuario;
-import com.example.parcial.Database.DBparcial;
-import com.example.parcial.Database.DbProccess;
-import com.example.parcial.Database.Entidades.Usuarios;
 import com.example.parcial.Normal_User.Usuario_normal_Main;
 import com.google.android.material.textfield.TextInputEditText;
 
