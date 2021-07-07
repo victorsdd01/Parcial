@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
@@ -107,27 +108,43 @@ import com.google.android.material.textfield.TextInputEditText;
      }
 
      public void InsertarNuevoUsuario(String tipoUsuario){
+        try {
+            String usuario,password;
 
-        String usuario,password;
+            usuario=this.usuario.getText().toString();
+            password=this.password.getText().toString();
 
-         usuario=this.usuario.getText().toString();
-         password=this.password.getText().toString();
+            DBparcial dbParcial  = new DBparcial(getApplicationContext(),"RecetasDB",null,1);
+            SQLiteDatabase db = dbParcial.getWritableDatabase();
+            if(db!=null){
+                try {
+                    ContentValues values = new ContentValues();
+                    values.put("nombre_usuario",usuario);
+                    values.put("password_usuario",password);
+                    values.put("tipoUsuario_usuario",tipoUsuario);
+                    db.insert("t_usuarios",null,values);
+                    db.close();
+                    succssesAlert(usuario);
+                }catch (Exception e){Toast.makeText(this,"ha ocurrido un error de excepcion al insertar el usuario a la bd",Toast.LENGTH_LONG).show();}
+            }else{Toast.makeText(this,"Error en db!=null :( ",Toast.LENGTH_LONG).show();}
+        }catch (Exception e){Toast.makeText(this,"ha ocurrido un error de excepcion al insertar nuevo usuario",Toast.LENGTH_LONG).show();}
 
-         DBparcial dbParcial  = new DBparcial(getApplicationContext(),"RecetasDB",null,1);
-         SQLiteDatabase db = dbParcial.getWritableDatabase();
-         if(db!=null){
-             try {
-                 ContentValues values = new ContentValues();
-                 values.put("nombre_usuario",usuario);
-                 values.put("password_usuario",password);
-                 values.put("tipoUsuario_usuario",tipoUsuario);
-
-                 db.insert("t_usuarios",null,values);
-                 db.close();
-                 Toast.makeText(this,"Se a insertado correctamente el usaurio: "+usuario+"y el password: "+password+"",Toast.LENGTH_LONG).show();
-                 startActivity(new Intent(getApplicationContext(),Admin_Main.class));
-             }catch (Exception e){Toast.makeText(this,"ha ocurrido un error de excepcion al insertar el usuario",Toast.LENGTH_LONG).show();}
-         }else{Toast.makeText(this,"Error en db!=null :( ",Toast.LENGTH_LONG).show();}
      }//llave del metodo crearUsuario...
+
+     public void succssesAlert(String nombreUsuario){
+         try {
+             AlertDialog.Builder builder = new AlertDialog.Builder(this);
+             builder.setView(R.layout.alert_layout);
+             builder.setCancelable(true);
+             builder.setTitle("se ha registrado el usuario "+nombreUsuario+" correctamente");
+             new Handler().postDelayed(new Runnable() {
+                 @Override
+                 public void run() {
+                     startActivity(new Intent(getApplicationContext(),Admin_Main.class));
+                 }
+             },2300);
+             builder.show();
+         }catch (Exception e){Toast.makeText(this,"ha ocurrido un error al mostrar el alert",Toast.LENGTH_LONG).show();}
+     }
 
 }// llave de la clase...

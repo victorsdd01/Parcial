@@ -7,7 +7,7 @@
     tools:context=".Splash_activities.SplashScreen">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
+        android:id="@+id/alertSuccsses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="45dp"

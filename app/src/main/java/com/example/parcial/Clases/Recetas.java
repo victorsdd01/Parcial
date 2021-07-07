@@ -3,6 +3,7 @@ package com.example.parcial.Clases;
 public class Recetas {
 
     private String nombreReceta;
+    private String foto;
     private String ingrediente1;
     private String ingrediente2;
     private String ingrediente3;
@@ -10,11 +11,12 @@ public class Recetas {
     private String ingrediente5;
     private String procedimientoReceta;
 
-    public Recetas(String nombreReceta){
+    /*
+    public Recetas(String nombreReceta,String foto){
         this.nombreReceta=nombreReceta;
+        this.foto=foto;
     }
-
-
+    */
     public String getNombreReceta() {
         return nombreReceta;
     }
@@ -41,5 +43,41 @@ public class Recetas {
 
     public String getProcedimientoReceta() {
         return procedimientoReceta;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setNombreReceta(String nombreReceta) {
+        this.nombreReceta = nombreReceta;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public void setIngrediente1(String ingrediente1) {
+        this.ingrediente1 = ingrediente1;
+    }
+
+    public void setIngrediente2(String ingrediente2) {
+        this.ingrediente2 = ingrediente2;
+    }
+
+    public void setIngrediente3(String ingrediente3) {
+        this.ingrediente3 = ingrediente3;
+    }
+
+    public void setIngrediente4(String ingrediente4) {
+        this.ingrediente4 = ingrediente4;
+    }
+
+    public void setIngrediente5(String ingrediente5) {
+        this.ingrediente5 = ingrediente5;
+    }
+
+    public void setProcedimientoReceta(String procedimientoReceta) {
+        this.procedimientoReceta = procedimientoReceta;
     }
 }

@@ -11,8 +11,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/adminMain_ib_volver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFFFFF"
+            app:srcCompat="@drawable/regreso" />
 
         <TextView
             android:id="@+id/lbl_bienvenida"
@@ -65,6 +76,15 @@
         android:onClick="eliminarReceta"
         android:text="Eliminar receta"
         app:cornerRadius="20dp" />
+
+    <TextView
+        android:id="@+id/lbl_recetasAgregadas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Recetas que has agregado"
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <ListView
         android:id="@+id/admin_liistViewRecetas"

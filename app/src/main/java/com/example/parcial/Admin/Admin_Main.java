@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.parcial.Adapters.Adaptador;
 import com.example.parcial.Clases.Recetas;
 import com.example.parcial.Database.DBparcial;
+import com.example.parcial.Login;
 import com.example.parcial.R;
 
 import java.util.ArrayList;
@@ -28,7 +30,9 @@ public class Admin_Main extends AppCompatActivity {
 
     TextView  nombre_usuario;
     ListView lsv1;
-    Bundle usuario;
+    ImageButton volver;
+    String dato;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +45,16 @@ public class Admin_Main extends AppCompatActivity {
 
     private void IniciarController(){
         nombre_usuario=(TextView)findViewById(R.id.admin_main_txv_nombre_usuario);
-        nombre_usuario.setText(usuario.getString("usuario"));
+        volver=(ImageButton)findViewById(R.id.adminMain_ib_volver);
+        dato=getIntent().getStringExtra("nombre_administrador");
+        nombre_usuario.setText(dato);
         lsv1=(ListView)findViewById(R.id.admin_liistViewRecetas);
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               startActivity(new Intent(getApplicationContext(), Login.class));
+            }
+        });
     }// llave del iniciarController...
 
 
@@ -52,18 +64,24 @@ public class Admin_Main extends AppCompatActivity {
             DBparcial nuevaReceta = new DBparcial(getApplicationContext(),"RecetasDB",null,1);
             SQLiteDatabase db = nuevaReceta.getReadableDatabase();
             List<Recetas> NuevaReceta = new ArrayList<>();
-            String campos[]={"nombre_receta"};
+            String campos[]={"nombre_receta","foto_receta"};
             //String [] campos= {"nombre_receta,ingrediente_receta1,ingrediente_receta2,ingrediente_receta3,ingrediente_receta4,ingrediente_receta5"};
             Cursor c = db.query("t_recetas",campos,null,null,null,null,null);
             if(c.moveToFirst()){
                 do{
+                    Recetas receta = new Recetas();
+                    /*
                     Recetas receta = new Recetas(
-                            c.getString(0)
+                            c.getString(0),
+                            c.getString(1)
                     );
+                    */
+                    receta.setNombreReceta(c.getString(0));
+                    receta.setFoto(c.getString(1));
                     NuevaReceta.add(receta);
                 }while (c.moveToNext());
 
-            }else{Toast.makeText(this,"ha ocurrido un error en moveToFirst",Toast.LENGTH_LONG).show();}
+            }else{/*Toast.makeText(this,"ha ocurrido un error en moveToFirst",Toast.LENGTH_LONG).show();*/ }
 
             Adaptador adapter= new Adaptador(getApplicationContext(),NuevaReceta);
             lsv1.setAdapter(adapter);

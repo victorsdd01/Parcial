@@ -31,6 +31,7 @@ public class DBparcial extends SQLiteOpenHelper{
     String recetasTable=" CREATE TABLE "+TABLE_RECETAS+"(" +
             "id_receta INTEGER PRIMARY KEY AUTOINCREMENT," +
             "nombre_receta TEXT NOT NULL," +
+            "foto_receta TEXT NOT NULL," +
             "ingrediente_receta1 TEXT NOT NULL," +
             "ingrediente_receta2 TEXT NOT NULL," +
             "ingrediente_receta3 TEXT NOT NULL," +
@@ -40,7 +41,8 @@ public class DBparcial extends SQLiteOpenHelper{
     //-----------------tala recetas favoritas---------------------//
     String recetasFavoritasTable="CREATE TABLE "+TABLE_FAVORTIAS+"(" +
             "id_recetaFavorita INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "nombre_recetaFavortia TEXT NOT NULL)";
+            "nombre_recetaFavortia TEXT NOT NULL," +
+            "foto_recetaFavorita TEXT NOT NULL)";
 //-----------------------------------------------------------
 
    @Override
