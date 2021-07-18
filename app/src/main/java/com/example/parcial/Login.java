@@ -54,7 +54,7 @@ public class Login extends AppCompatActivity {
                     values.put("password_usuario",password);
                     values.put("tipoUsuario_usuario",TipoUsuario);
                     db.insert("t_usuarios",null,values);
-                    Toast.makeText(this,"en teoria se inserto el usuario inicial "+usuario+"como administrador",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"en teoria se inserto el usuario inicial "+usuario+" como administrador",Toast.LENGTH_LONG).show();
                 }
 
             }else{ Toast.makeText(this,"error en db!=null",Toast.LENGTH_LONG).show();}
@@ -128,7 +128,7 @@ public class Login extends AppCompatActivity {
             Cursor c= db.rawQuery("SELECT nombre_usuario,password_usuario,tipoUsuario_usuario FROM t_usuarios WHERE nombre_usuario='"+usuario+"' AND password_usuario='"+pass+"' AND tipoUsuario_usuario='"+tipoUsuario+"' ",null);
             if(db!=null){
                 if(c.moveToFirst()){
-                    Toast.makeText(this, "si loguea", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, "si loguea", Toast.LENGTH_LONG).show();
                     if(tipoUsuario.equals("Usuario normal")){
                         try {
                             Intent i = new Intent(getApplicationContext(),Usuario_normal_Main.class);

@@ -98,7 +98,7 @@ public class agregarReceta extends AppCompatActivity {
                     db.insert("t_recetas",null,values);
                     //Toast.makeText(this,"en teoria se inserto la receta "+nombreReceta+" se inserto correctamente",Toast.LENGTH_LONG).show();
                     db.close();
-                    succssesAlert(nombreReceta);
+                    succssesAlert(nombreReceta,foto);
                 }catch (Exception e){Toast.makeText(this,"error de excepcion al agregar la receta",Toast.LENGTH_LONG).show();}
             }else{Toast.makeText(this,"error al agregar la receta",Toast.LENGTH_LONG).show();}
 
@@ -106,7 +106,7 @@ public class agregarReceta extends AppCompatActivity {
 
     }
 
-    public void succssesAlert(String nombreReceta){
+    public void succssesAlert(String nombreReceta,String foto){
         try {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setView(R.layout.alert_layout);
@@ -115,7 +115,14 @@ public class agregarReceta extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(getApplicationContext(),Admin_Main.class));
+                    Intent i = new Intent();
+                    if(foto!=null){
+                        i.putExtra("urlFoto",foto);
+                        Toast.makeText(getApplicationContext(),"mando la foto",Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(getApplicationContext()," no tiene foto",Toast.LENGTH_LONG).show();
+                    }
+
                 }
             },2300);
             builder.show();

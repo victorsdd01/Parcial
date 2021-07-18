@@ -47,7 +47,7 @@ public class Adaptador extends ArrayAdapter<Recetas> {
             Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             fotito.setImageBitmap(bitmap);
         } catch (Exception e) {
-            Toast.makeText(getContext().getApplicationContext(), "ha ocurrido un error al cargar la foto",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getContext().getApplicationContext(), "ha ocurrido un error al cargar la foto",Toast.LENGTH_LONG).show();
         }
 
         return (item);

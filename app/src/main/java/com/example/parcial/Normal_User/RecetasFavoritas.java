@@ -1,27 +1,20 @@
 package com.example.parcial.Normal_User;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.parcial.Adapters.Adaptador;
-import com.example.parcial.Admin.Admin_Main;
 import com.example.parcial.Clases.Recetas;
 import com.example.parcial.Database.DBparcial;
-import com.example.parcial.Login;
 import com.example.parcial.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,12 +45,15 @@ public class RecetasFavoritas extends AppCompatActivity {
             DBparcial dbParcial = new DBparcial(getApplicationContext(),"RecetasDB",null,1);
             SQLiteDatabase db = dbParcial.getReadableDatabase();
             List<Recetas> recetasFav = new ArrayList<>();
-            Cursor c=db.rawQuery("SELECT nombre_recetaFavortia FROM t_recetasFavoritas ",null);
+            Cursor c=db.rawQuery("SELECT nombre_recetaFavortia,foto_recetaFavorita FROM t_recetasFavoritas ",null);
             if(c.moveToFirst()){
                 do {
+
                     Recetas recetaFavoritas = new Recetas();
                     recetaFavoritas.setNombreReceta(c.getString(0));
+                    recetaFavoritas.setFoto(c.getString(1));
                     recetasFav.add(recetaFavoritas);
+
                 }while (c.moveToNext());
 
             }else{Toast.makeText(this,"no se ha encontrado recetas favoritas",Toast.LENGTH_LONG).show();}
